@@ -1,2 +1,2 @@
 # projeto-conjuntos
-Projeto de implementação do conceito de Conjuntos Matemáticos na linguagem C, proposto pela disciplina Estrutura de Dados
+Projeto proposto pela disciplina de Estrutura de Dados para a implementação do conceito de Conjuntos Matemáticos na linguagem C, através de Árvores.
