@@ -16,10 +16,10 @@ soluções de problemas matemáticos (puros e aplicados), de otimização e esta
 Implementar o TAD Conjunto de modo que suas operações especificas tenham a
 menor complexidade computacional possível. As operações consideradas são:
 
-- 1) Operações básicas para TADs em geral: Criar (um conjunto), Apagar (um
+1) Operações básicas para TADs em geral: Criar (um conjunto), Apagar (um
 conjunto), Inserir (um elemento em um conjunto), Remover (um elemento de um
 conjunto) e Imprimir (imprimir os elementos/itens armazenados no TAD).
 
-- 2) As operações específicas de conjuntos: Pertence (um elemento está presente
+2) As operações específicas de conjuntos: Pertence (um elemento está presente
 ou não no conjunto), União, Intersecção. Note que nessas 2 útlimas operações
 recebem como entrada 2 conjuntos e devolvem um 3o conjunto como resposta.
