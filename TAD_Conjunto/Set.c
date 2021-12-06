@@ -3,6 +3,9 @@
 #include <stdlib.h>
 
 typedef struct no NO;
+typedef struct nop NOP;
+typedef struct pilha PILHA;
+
 
 struct no
 {
@@ -11,6 +14,68 @@ struct no
     NO *dir;
     int altura;
 };
+
+struct nop
+{
+    NO *elemento;
+    NOP *anterior;
+};
+
+struct pilha
+{
+  NOP *topo;
+  int tamanho;
+};
+
+
+PILHA *pilha_criar()
+{
+  PILHA *pilha = (PILHA *)malloc(sizeof(PILHA));
+    if (pilha != NULL)
+    {
+        pilha->topo = NULL;
+        pilha->tamanho = 0;
+    }
+    return pilha;
+}
+
+NOP *nop_criar(NO *elemento)
+{
+  NOP *nop = (NOP *)malloc(sizeof(NOP));
+    if (nop != NULL)
+    {
+        nop->anterior = NULL;
+        nop->elemento = elemento;
+    }
+    return nop;
+}
+
+void pilha_push(PILHA *pilha, NO* elemento)
+{
+  NOP *nop = nop_criar(elemento);
+  nop->anterior = pilha->topo;
+  pilha->topo = nop;
+  pilha->tamanho++;
+}
+
+NO *pilha_topo(PILHA *pilha)
+{
+  return pilha->topo->elemento;
+}
+
+void pilha_pop(PILHA *pilha)
+{
+  NOP *nop = pilha->topo;
+  pilha->topo=pilha->topo->anterior;
+  pilha->tamanho--;
+  free(nop);
+}
+
+boolean pilha_vazia(PILHA *pilha)
+{
+  return (pilha->tamanho==0);
+}
+
 
 struct set
 {
@@ -242,14 +307,60 @@ void set_imprimir(SET *set)
 // Operação de Conjuntos => Verifica o pertencimento de um elemento em relação a um conjunto
 boolean set_pertence(SET *set, int elemento)
 {
+  NO* root = set->raiz;
+  while(root!=NULL)
+  {
+    if(root->elemento==elemento)  return 1;
+    if(root->elemento>elemento) root=root->esq;
+    else  root=root->dir;
+  }
+  return 0;
+}
+
+void set_uniao_aux(SET *set,NO *root)
+{
+  if(root==NULL) return ;
+  set_inserir(set, root->elemento);
+  set_uniao_aux(set,root->esq);
+  set_uniao_aux(set,root->dir);
 }
 
 // Operação de Conjuntos => União entre Conjuntos
 SET *set_uniao(SET *A, SET *B)
 {
+  SET *set = set_criar();
+  set_uniao_aux(set,A->raiz);
+  set_uniao_aux(set,B->raiz);
+  return set;
 }
 
+void set_inter_aux(SET *set, NO *root_a, NO *root_b)
+{
+  if(root_a == NULL ) return;
+  if(root_b == NULL)  return;
+  if(root_a->elemento==root_b->elemento)
+  {
+    set_inserir(set, root_a->elemento);
+    set_inter_aux(set, root_a->esq,root_b->esq);
+    set_inter_aux(set, root_a->dir,root_b->dir);
+  }
+  else if(root_a->elemento>root_b->elemento)
+  {
+      set_inter_aux(set, root_a,root_b->dir);
+      set_inter_aux(set, root_a->esq,root_b);
+  }
+  else
+  {
+      set_inter_aux(set, root_a->dir,root_b);
+      set_inter_aux(set, root_a,root_b->esq);
+  }
+}
 // Operação de Conjuntos => Intersecção entre Conjuntos
 SET *set_inter(SET *A, SET *B)
 {
+  SET *set = set_criar();
+  set_inter_aux(set,A->raiz,B->raiz);
+  return set;
 }
+
+
