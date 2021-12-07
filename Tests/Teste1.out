@@ -39,13 +39,17 @@ O elemento 7 pertence ao conjunto 1
 O elemento 7 pertence ao conjunto 2
 O elemento 7 NÃO pertence ao conjunto 3
 --------------------------------------------------
-O elemento 4 NÃO pertence ao conjunto 1
-O elemento 4 pertence ao conjunto 2
-O elemento 4 NÃO pertence ao conjunto 3
+Conjunto 1: {7 8 }
+Conjunto 2: {2 4 10 14 }
+Conjunto 3: {}
+--------------------------------------------------
+O elemento 7 pertence ao conjunto 1
+O elemento 7 NÃO pertence ao conjunto 2
+O elemento 7 NÃO pertence ao conjunto 3
 --------------------------------------------------
 União(1, 2): {2 4 7 8 10 14 }
 --------------------------------------------------
-Intersecção(1, 2): {7 }
+Intersecção(1, 2): {}
 --------------------------------------------------
 Finalizando Programa
 --------------------------------------------------

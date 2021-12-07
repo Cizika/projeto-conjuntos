@@ -124,15 +124,15 @@ NO *set_inserir_no(NO *raiz, int elemento)
         raiz->esq = set_inserir_no(raiz->esq, elemento);
 
     raiz->altura = max(set_altura_no(raiz->esq), set_altura_no(raiz->dir)) + 1;
-    int FB = set_altura_no(raiz->esq) - set_altura_no(raiz->dir);
-    if (FB == 2)
+    if (set_altura_no(raiz->esq) - set_altura_no(raiz->dir) == 2)
     {
         if (elemento < raiz->esq->elemento)
             raiz = set_rotacao_direita(raiz);
         else
             raiz = set_rotacao_esquerda_direita(raiz);
     }
-    else if (FB == -2)
+
+    if (set_altura_no(raiz->esq) - set_altura_no(raiz->dir) == -2)
     {
         if (elemento > raiz->dir->elemento)
             raiz = set_rotacao_esquerda(raiz);
@@ -191,22 +191,21 @@ NO *set_remover_aux(NO **raiz, int elemento)
             troca_max_esq((*raiz)->esq, (*raiz), (*raiz));
     }
     else if (elemento < (*raiz)->elemento)
-        return set_remover_aux(&(*raiz)->esq, elemento);
+        (*raiz)->esq = set_remover_aux(&(*raiz)->esq, elemento);
     else if (elemento > (*raiz)->elemento)
-        return set_remover_aux(&(*raiz)->dir, elemento);
+        (*raiz)->dir =  set_remover_aux(&(*raiz)->dir, elemento);
 
     if (*raiz != NULL)
     {
         (*raiz)->altura = max(set_altura_no((*raiz)->esq), set_altura_no((*raiz)->dir)) + 1;
-        int FB = set_altura_no((*raiz)->esq) - set_altura_no((*raiz)->dir);
-        if (FB == -2)
+        if (set_altura_no((*raiz)->esq) - set_altura_no((*raiz)->dir) == -2)
         {
             if (set_altura_no((*raiz)->dir->esq) - set_altura_no((*raiz)->dir->dir) <= 0)
                 *raiz = set_rotacao_esquerda(*raiz);
             else
                 *raiz = set_rotacao_direita_esquerda(*raiz);
         }
-        if (FB == 2)
+        if (set_altura_no((*raiz)->esq) - set_altura_no((*raiz)->dir) == 2)
         {
             if (set_altura_no((*raiz)->esq->esq) - set_altura_no((*raiz)->esq->dir) >= 0)
                 *raiz = set_rotacao_direita(*raiz);
