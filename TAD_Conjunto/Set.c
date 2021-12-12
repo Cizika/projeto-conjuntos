@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 typedef struct no NO;
-typedef struct nop NOP;
 
 struct no
 {
@@ -148,6 +147,7 @@ boolean set_inserir(SET *set, int elemento)
     return ((set->raiz = set_inserir_no(set->raiz, elemento)) != NULL);
 }
 
+// Troca o Nó desejado com o máximo elemento da sub-árvore à esquerda
 void troca_max_esq(NO *troca, NO *raiz, NO *ant)
 {
     if (troca->dir != NULL)
@@ -193,7 +193,7 @@ NO *set_remover_aux(NO **raiz, int elemento)
     else if (elemento < (*raiz)->elemento)
         (*raiz)->esq = set_remover_aux(&(*raiz)->esq, elemento);
     else if (elemento > (*raiz)->elemento)
-        (*raiz)->dir =  set_remover_aux(&(*raiz)->dir, elemento);
+        (*raiz)->dir = set_remover_aux(&(*raiz)->dir, elemento);
 
     if (*raiz != NULL)
     {
@@ -257,7 +257,7 @@ boolean set_pertence(SET *set, int elemento)
     return 0;
 }
 
-// Inserção no novo conjunto através de algoritmo PRE-ORDER
+// Função auxiliar para realizar a união através de algoritmo PRE-ORDER
 void set_uniao_aux(SET *set, NO *root)
 {
     if (root != NULL)
@@ -277,6 +277,7 @@ SET *set_uniao(SET *A, SET *B)
     return set;
 }
 
+// Função auxiliar para realizar a intersecção através de algoritmo PRE-ORDER
 void set_inter_aux(SET *set, NO *root_a, NO *root_b)
 {
     if (root_a != NULL && root_b != NULL)

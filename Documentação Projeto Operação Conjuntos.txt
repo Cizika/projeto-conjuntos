@@ -1,0 +1,40 @@
+﻿Projeto II - Operações sobre conjuntos (Sets)
+
+	Alexsander Justa - 12559444 - 2021201
+	Arthur Santorum Lorenzetto - 12559465 - 2021201
+	Lucas Ivars Cadima Ciziks - 12559472 - 2021201
+
+Um breve relatório sobre a complexidade computacional (Big Oh) de cada uma das operações (básicas e específicas). 
+
+	Para implementar o TAD Conjuntos, qual a estrutura de dados que melhor otimiza a complexidade e economiza custo de processamento nas operações específicas (Pertencimento, União e Intersecção)?
+	Em um primeiro momento, pode-se pensar em uma Lista para representar o Conjunto Matemático, porém, dada a necessidade de buscas em todas as operações específicas, o custo computacional seria ineficiente (considerando que a busca de uma lista seja sequencial). Nesse contexto, a fim de otimizar ao máximo o custo das operações básicas e, principalmente, das específicas, foi utilizada a estrutura de dados AVL para implementar o TAD Conjuntos,  isto é, uma árvore binária de busca que se mantém balanceada independente das inserções e remoções, através das rotações. 
+	Assim, tanto as operações básicas que precisam de uma busca, como a inserção e remoção, quanto as operações específicas do TAD Conjuntos apresentam uma complexidade computacional mais vantajosa quando comparadas a de uma estrutura de Lista. Desse modo, como nas operações de pertencimento, união e intersecção são exigidas buscas, a AVL se torna a melhor alternativa como estrutura de dados nesse caso.
+
+
+		Operações 	Lista	 	AVL
+-----------------------------------------------------------
+		Criar 		O(1)		O(1)
+		Apagar 		O(n)		O(n)
+Básicas 	Inserir 	O(1)		O(log n)
+		Remover 	O(n)		O(log n)
+		Imprimir 	O(n)		O(n)
+-----------------------------------------------------------
+		Pertence	O(n)		O(log n)
+Específicas 	União		O(n²)		O(n.log n)
+		Intersecção	O(n²)		O(n.log n)
+-----------------------------------------------------------
+
+
+OBSERVAÇÕES:
+
+• Para percorrer uma árvore deve-se visitar cada um de seus nós. Visitar um nó significa manusear de alguma maneira a informação do nó. Um algoritmo de percurso de uma árvore T é composto de três passos: 
+	- visitar a raiz de T; 
+	- percorrer a subárvore esquerda de T; e 
+	- percorrer a subárvore direita de T. 
+Esses passos podem ser executados em ordens diferentes: pré-ordem, em ordem e pós-ordem.
+Nos três casos de algoritmos de percurso, a complexidade de pior caso é O(n), onde n é o número de nós da árvore. 
+• O procedimento de inserção produz o efeito de percorrer a árvore desde a sua raiz até o nó incluído, logo o número de passos realizados é O(log n).
+• A operação específica:
+	- Pertencimento possui complexidade O(log n), uma vez que é equivalente a uma busca binária.
+	- União possui complexidade O(n.log n), pois percorre a árvore desde a sua raiz até o nó para inserir em um novo conjunto - O(log n) - fazendo isso n vezes, onde n é o número de nós.
+	- Intersecção é equivalente à operação União.
