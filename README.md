@@ -1,5 +1,5 @@
 # projeto-conjuntos
-Projeto proposto pela disciplina de Estrutura de Dados para a implementação do conceito de Conjuntos Matemáticos na linguagem C, através de Árvores.
+Projeto proposto pela disciplina de Estrutura de Dados para a implementação do conceito de Conjuntos Matemáticos na linguagem C, através de Árvores. É possível encontrar o projeto em https://github.com/Cizika/projeto-conjuntos.
 
 ### Descrição do Problema
 Conjunto é um conceito básico do ramo matemático da Teoria dos Conjuntos. Um

@@ -4,6 +4,8 @@
 	Arthur Santorum Lorenzetto - 12559465 - 2021201
 	Lucas Ivars Cadima Ciziks - 12559472 - 2021201
 
+O projeto está disponível em https://github.com/Cizika/projeto-conjuntos
+
 Um breve relatório sobre a complexidade computacional (Big Oh) de cada uma das operações (básicas e específicas). 
 
 	Para implementar o TAD Conjuntos, qual a estrutura de dados que melhor otimiza a complexidade e economiza custo de processamento nas operações específicas (Pertencimento, União e Intersecção)?
